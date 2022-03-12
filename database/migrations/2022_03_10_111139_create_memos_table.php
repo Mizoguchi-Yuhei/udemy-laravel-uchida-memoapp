@@ -14,7 +14,7 @@ class CreateMemosTable extends Migration
     public function up()
     {
         Schema::create('memos', function (Blueprint $table) {
-            $table->unsignedBigInteger('id', true);  // 外部キー制約のためunsigned
+            $table->unsignedBigInteger('id', true);  // 外部キー制約のためunsigned  trueでオートインクリメント
             $table->longText('content');
             $table->unsignedBigInteger('user_id');
             // 論理削除を定義 deleted_atを自動生成

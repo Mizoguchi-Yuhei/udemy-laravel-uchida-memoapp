@@ -93,10 +93,14 @@
                 <div class="col-md-4 p-0">
                     <div class="card">
                         <div class="card-header">
-                            Featured
+                            メモ一覧
                         </div>
                         <div class="card-body">
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                @foreach ($memos as $memo)
+                                    <a href="/edit/{{$memo['id']}}" class="card-text d-block">
+                                        {{ $memo['content'] }}
+                                    </a>
+                                @endforeach
                         </div>
                     </div>
                 </div>
