@@ -59,8 +59,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -75,15 +75,33 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="container">
             <div class="row">
-                <div class="col-md-2">
-                    {{-- 左カラム --}}
+                {{-- 左カラム --}}
+                <div class="col-md-2 p-0">
+                    <div class="card">
+                        <div class="card-header">
+                            Featured
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    {{-- 中央カラム --}}
+
+                {{-- 中央カラム --}}
+                <div class="col-md-4 p-0">
+                    <div class="card">
+                        <div class="card-header">
+                            Featured
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-md-6 p-0">
                     {{-- 右カラム --}}
                     @yield('content')
                 </div>
