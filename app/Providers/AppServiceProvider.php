@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Memo;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +25,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        // すべてのメソッドが呼ばれる前に先に呼び出されるメソッド
+        view()->composer('*', function ($view) {
+            // メモ一覧
+            $memos = Memo::select('memos.*')
+            ->where('user_id', '=', \Auth::id())
+            ->whereNull('deleted_at')
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+            $view->with('memos', $memos);
+        });
     }
 }
