@@ -32,7 +32,6 @@ class HomeController extends Controller
             ->whereNull('deleted_at')
             ->orderBy('id', 'desc')
             ->get();
-        // dd($tags);
 
         return view('create', compact('tags'));
     }
