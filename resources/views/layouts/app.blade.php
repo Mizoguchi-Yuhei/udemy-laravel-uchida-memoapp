@@ -88,7 +88,7 @@
             <div class="row">
                 {{-- {{ dd($tags) }} --}}
                 {{-- 左カラム --}}
-                <div class="col-md-2 p-0">
+                <div class="col-sm-12 col-md-2 p-0">
                     <div class="card">
                         <div class="card-header">
                             タグ一覧
@@ -108,7 +108,7 @@
                 </div>
 
                 {{-- 中央カラム --}}
-                <div class="col-md-4 p-0">
+                <div class="col-sm-12 col-md-4 p-0">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             メモ一覧<a href="{{ route('home') }}"><i class="fas fa-plus"></i></a>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 p-0">
+                <div class="col-sm-12 col-md-6 p-0">
                     {{-- 右カラム --}}
                     @yield('content')
                 </div>
