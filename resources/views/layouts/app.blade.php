@@ -20,6 +20,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -108,7 +110,7 @@
                 <div class="col-md-4 p-0">
                     <div class="card">
                         <div class="card-header">
-                            メモ一覧
+                            メモ一覧 &nbsp;<a href="{{ route('home') }}"><i class="fas fa-plus"></i></a>
                         </div>
                         <div class="card-body">
                             @foreach ($memos as $memo)
