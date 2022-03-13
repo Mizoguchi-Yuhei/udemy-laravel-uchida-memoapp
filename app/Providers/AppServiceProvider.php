@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Memo;
+use App\Models\Tag;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,14 +28,19 @@ class AppServiceProvider extends ServiceProvider
         //
         // すべてのメソッドが呼ばれる前に先に呼び出されるメソッド
         view()->composer('*', function ($view) {
-            // メモ一覧
-            $memos = Memo::select('memos.*')
-            ->where('user_id', '=', \Auth::id())
-            ->whereNull('deleted_at')
-            ->orderBy('updated_at', 'desc')
-            ->get();
+            // Memoモデルのメソッドを呼び出し
+            // インスタンス化が必要
+            $memo_model = new Memo();
+            // メモ取得
+            $memos = $memo_model->getMyMemo();
 
-            $view->with('memos', $memos);
+            // タグ一覧
+            $tags = Tag::where('user_id', '=', \Auth::id())
+                ->whereNull('deleted_at')
+                ->orderBy('id', 'desc')
+                ->get();
+
+            $view->with('memos', $memos)->with('tags', $tags);
         });
     }
 }

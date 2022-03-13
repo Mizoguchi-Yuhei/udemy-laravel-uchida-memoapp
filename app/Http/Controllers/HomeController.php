@@ -43,6 +43,10 @@ class HomeController extends Controller
     public function store(Request $request)  // postの場合 Requestファサードの インスタンス化
     {
         $posts = $request->all();
+        // バリデーション
+        $request->validate([
+            'content' => 'required',
+        ]);
         // dd($posts);  // dd : dump die の略 メソッドの引数にとった値を展開して止める (データの確認)
 
         // ここからトランザクション開始
@@ -70,7 +74,6 @@ class HomeController extends Controller
         });
         // ここまででトランザクション終了
 
-
         return redirect(route('home'));
     }
 
@@ -91,13 +94,7 @@ class HomeController extends Controller
             array_push($include_tags, $e_memo['tag_id']);
         }
 
-        // タグ一覧
-        $tags = Tag::where('user_id', '=', \Auth::id())
-            ->whereNull('deleted_at')
-            ->orderBy('id', 'desc')
-            ->get();
-
-        return view('edit', compact('edit_memo', 'include_tags', 'tags'));
+        return view('edit', compact('edit_memo', 'include_tags'));
     }
 
 
@@ -107,6 +104,10 @@ class HomeController extends Controller
     public function update(Request $request)  // postの場合 Requestファサードの インスタンス化
     {
         $posts = $request->all();
+        // バリデーション
+        $request->validate([
+            'content' => 'required',
+        ]);
 
         // トランザクション開始
         DB::transaction(function () use ($posts) {

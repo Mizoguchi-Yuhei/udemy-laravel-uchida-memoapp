@@ -18,8 +18,18 @@
 
             {{-- メモ表示欄 --}}
             <div class="form-group">
-                <textarea class="form-control" name="content" rows="3" placeholder="ここにメモを入力">{{ $edit_memo[0]['content'] }}</textarea>
+                <textarea class="form-control" name="content" rows="3"
+                    placeholder="ここにメモを入力">{{ $edit_memo[0]['content'] }}</textarea>
             </div>
+
+            {{-- バリデーションエラー表示 --}}
+            @error('content')
+                <div class="alert alert-danger p-2 m-2">
+                    {{-- {{ $message }} --}}
+                    メモ内容を入力してください。
+                </div>
+            @enderror
+
 
             {{-- タグ欄 --}}
             @foreach ($tags as $tag)
