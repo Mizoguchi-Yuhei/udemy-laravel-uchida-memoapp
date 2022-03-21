@@ -1,0 +1,18 @@
+.my-card-body {
+    height: calc(100vh - (55px + 48px));
+}
+
+/* 一行で表示 超過は三転リーダー */
+.ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+    /* 画面サイズが480pxからはここから */
+    .my-card-body {
+        height: auto;
+        max-height: 50vh;
+    }
+}
